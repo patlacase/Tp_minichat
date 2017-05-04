@@ -17,7 +17,7 @@
 
 	<body>
 
-		
+		<!-- formulaire pour le pseudo et le message -->
 
 		<form action="minichat_post.php" method="POST">
 			<p>
@@ -30,6 +30,24 @@
 			
 			<input type="submit" name="Envoyer">
 		</form>
+
+
+		<?php
+			//connexion à la bdd minichat
+
+			try
+			{
+				$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+				array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+			}
+
+			//en cas de problème on affiche l'erreur
+
+			catch(Exception $e)
+			{
+				die('Erreur' . $e -> getMessage());
+			}
+
 
 	</body>
 </html>
