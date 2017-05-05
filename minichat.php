@@ -48,6 +48,21 @@
 				die('Erreur' . $e -> getMessage());
 			}
 
+			//on récupère les 10 derniers messages
+
+			$reponse = $bdd->query('SELECT pseudo, message FROM minichat ORDER BY Id DESC LIMIT 0,10');
+
+			//on affiche les messages grâce à while en protégeant les données par htmlspecialchar
+
+			while($donnees = $reponse->fetch())
+			{
+				echo '<p><strong>' . htmlspecialchars($donnees['pseudo']) . '</strong> : ' . htmlspecialchars($donnees['message']) . '</p>';
+			}
+
+			$reponse->closeCursor();
+
+			?>
+
 
 	</body>
 </html>
